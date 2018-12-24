@@ -44,7 +44,10 @@ print "prediction time:", round(time()-t1, 3), "s"
 #  0.267 s
 
 correct=0
+count =0
 for ii in range(0,len(pred)):
+    if(pred[ii]):
+    	count = count+1
     if (pred[ii] == labels_test[ii]):
         correct = correct+1
 ### calculate and return the accuracy on the test data
@@ -55,6 +58,5 @@ for ii in range(0,len(pred)):
 accuracy = float(correct)/len(pred)
 
 print accuracy
-#########################################################
 
-
+print count, len(pred)
