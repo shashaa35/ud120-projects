@@ -19,4 +19,13 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
-
+salary = 0.0
+# count = 0
+for person,data in enron_data.iteritems():
+	if data['total_payments']=="NaN":
+		salary = salary+1
+		print (str(data))
+	# if data['email_address']!='NaN':
+	# 	email = email+1
+	
+print(salary,len(enron_data))

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from time import time
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
@@ -24,7 +24,7 @@ plt.scatter(grade_slow, bumpy_slow, color = "r", label="slow")
 plt.legend()
 plt.xlabel("bumpiness")
 plt.ylabel("grade")
-plt.show()
+# plt.show()
 ################################################################################
 
 
@@ -33,10 +33,19 @@ plt.show()
 
 
 
+#########################################################
+### your code goes here ###
+
+# from sklearn.ensemble import RandomForestClassifier
+# clf = RandomForestClassifier()
+# clf.fit(features_train, labels_train)
+# print " acc: ", clf.score(features_test, labels_test)
 
 
-
-
+from sklearn.neighbors import KNeighborsClassifier
+clf = KNeighborsClassifier(n_neighbors=4, algorithm='auto', weights='distance')
+clf.fit(features_train, labels_train)
+print "acc: ", clf.score(features_test, labels_test)
 
 try:
     prettyPicture(clf, features_test, labels_test)
