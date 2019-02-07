@@ -4,27 +4,21 @@
     A general tool for converting data from the
     dictionary format to an (n x k) python list that's 
     ready for training an sklearn algorithm
-
     n--no. of key-value pairs in dictonary
     k--no. of features being extracted
-
     dictionary keys are names of persons in dataset
     dictionary values are dictionaries, where each
         key-value pair in the dict is the name
         of a feature, and its value for that person
-
     In addition to converting a dictionary to a numpy 
     array, you may want to separate the labels from the
     features--this is what targetFeatureSplit is for
-
     so, if you want to have the poi label as the target,
     and the features you want to use are the person's
     salary and bonus, here's what you would do:
-
     feature_list = ["poi", "salary", "bonus"] 
     data_array = featureFormat( data_dictionary, feature_list )
     label, features = targetFeatureSplit(data_array)
-
     the line above (targetFeatureSplit) assumes that the
     label is the _first_ item in feature_list--very important
     that poi is listed first!
@@ -55,7 +49,7 @@ def featureFormat( dictionary, features, remove_NaN=True, remove_all_zeroes=True
     # second branch is for compatibility on final project.
     if isinstance(sort_keys, str):
         import pickle
-        keys = pickle.load(open(sort_keys, "rb"))
+        keys = pickle.load(open(sort_keys, "r"))
     elif sort_keys:
         keys = sorted(dictionary.keys())
     else:
@@ -108,9 +102,7 @@ def targetFeatureSplit( data ):
         featureFormat, separate out the first feature
         and put it into its own list (this should be the 
         quantity you want to predict)
-
         return targets and features as separate lists
-
         (sklearn can generally handle both lists and numpy arrays as 
         input formats when training/predicting)
     """
@@ -122,7 +114,3 @@ def targetFeatureSplit( data ):
         features.append( item[1:] )
 
     return target, features
-
-
-
-
